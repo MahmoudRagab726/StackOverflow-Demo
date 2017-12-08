@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+        <title>All Questions</title>
+         <meta charset="utf-8"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Stack Overflow</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="Show-All.sakr">All Questions</a></li>
+      <li><a href="Ask-Question.sakr">Ask question</a></li>
+      
+    </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+      <li><a href="Show.sakr" ><span class="glyphicon glyphicon-user"> #{userBean.name}</span></a></li>
+      
+    </ul>
+  </div>
+</nav>
+  <div class="container">			
+  <div class="row" style="margin-top:5%;">
+    <div class="col-md-12 col-md-offset-0">
+     <ui:repeat var="temp" value="#{questionBean.getAllQuestions()}">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+            <strong>Question for <span style="color: red;">#{temp.email}</span>
+            <span style="float: right;padding-right: 10px;"> <span class="glyphicon glyphicon-chevron-down"> </span>  #{temp.vote} <span class="glyphicon glyphicon-chevron-up">  </span> </span></strong>
+           
+        </div>
+        <div class="panel-body">
+          
+           <ul>
+             
+                    <div class="row">
+                        <div class="panel " style="text-align: center; ">
+                                <a href="Question.sakr?id=#{temp.id}"><b>#{temp.title}</b></a>
+                            </div>
+                        
+                        <div class="panel" style="">
+                                #{temp.question}
+                            </div>
+                        
+                            <div class="panel-footer">
+                                #{temp.date}
+                            </div>
+
+                    </div>
+              
+             </ul>
+         
+        </div>
+          
+      </div>
+         </ui:repeat>
+    </div>
+  </div>
+</div>
+        
+        
+    </h:body>
+</html>
+
